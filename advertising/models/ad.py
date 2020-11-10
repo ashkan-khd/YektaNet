@@ -16,3 +16,6 @@ class Ad(models.Model):
         related_name='ads',
         on_delete=PROTECT
     )
+
+    def __str__(self):
+        return str(self.title) + '-' + ' from ' + str(self.advertiser.name)
