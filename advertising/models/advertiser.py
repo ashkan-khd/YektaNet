@@ -10,5 +10,9 @@ class Advertiser(models.Model):
             clicks += ad.clicks.count()
         return clicks
 
+    def approved_ads(self):
+        ads = self.ads.filter(is_approved=True)
+        return ads
+
     def __str__(self):
         return str(self.name)
