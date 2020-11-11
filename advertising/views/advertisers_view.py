@@ -2,7 +2,6 @@ from django.shortcuts import get_object_or_404
 from django.views.generic import TemplateView, RedirectView
 
 from advertising.models import Advertiser, Ad
-from advertising.services import click_ad
 
 
 class AdvertisersView(TemplateView):
@@ -17,7 +16,14 @@ class AdvertisersView(TemplateView):
 class AdRedirectView(RedirectView):
     permanent = True
 
+    @staticmethod
+    def click_ad(ad):
+        ad.clicks += 1
+        ad.advertiser.clicks += 1
+        ad.save()
+        ad.advertiser.save()
+
     def get_redirect_url(self, *args, **kwargs):
         ad = get_object_or_404(Ad, pk=kwargs['pk'])
-        click_ad(ad)
+        self.click_ad(ad)
         return ad.link

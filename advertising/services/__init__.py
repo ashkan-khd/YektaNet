@@ -1,1 +1,0 @@
-from .ads import click_ad
