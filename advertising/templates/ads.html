@@ -14,15 +14,17 @@
             <div class="card-body">
                 <div class="row">
 		    {% for ad in advertiser.ads.all %}
-		        <div class="card col-md-2 p-0 mx-2">
-		            <a href="../ads/{{ ad.id }}/click/">
-		                <img src="{{ ad.image_url }}"
-		                     class="card-img-top">
-		                <div class="card-body">
-		                    <span>{{ ad.title }}</span>
-		                </div>
-		            </a>
-		        </div>
+                {% if ad.is_approved %}
+                    <div class="card col-md-2 p-0 mx-2">
+                        <a href="../ads/{{ ad.id }}/click/">
+                            <img src="{{ ad.image_url }}"
+                                 class="card-img-top">
+                            <div class="card-body">
+                                <span>{{ ad.title }}</span>
+                            </div>
+                        </a>
+		            </div>
+                {% endif %}
 		    {% endfor %}
                 </div>
             </div>

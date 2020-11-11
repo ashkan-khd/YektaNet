@@ -20,7 +20,9 @@ class AdAdmin(admin.ModelAdmin):
     def Views(self, obj):
         return obj.views.count()
 
-    list_display = ['__str__', 'Clicks', 'Views']
+    list_display = ['__str__', 'Clicks', 'Views', 'is_approved']
+    list_filter = ['is_approved']
+    search_fields = ['title']
 
     class Meta:
         model = Ad

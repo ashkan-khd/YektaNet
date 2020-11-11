@@ -8,6 +8,7 @@ class Ad(models.Model):
     title = models.CharField(max_length=255, null=False, blank=False)
     image_url = models.CharField(max_length=255, null=False, blank=False)
     link = models.CharField(max_length=255, null=True, blank=True)
+    is_approved = models.BooleanField(default=False)
 
     advertiser = models.ForeignKey(
         to=Advertiser,
