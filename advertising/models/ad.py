@@ -17,4 +17,4 @@ class Ad(models.Model):
     )
 
     def __str__(self):
-        return str(self.title) + '-' + ' from ' + str(self.advertiser.name)
+        return str(self.title) + '-' + ' from ' + str(self.advertiser.name) + '-id: ' + str(self.id)
