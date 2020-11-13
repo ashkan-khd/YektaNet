@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from advertising.models import Ad, Advertiser, Click
+from advertising.models import Ad, Advertiser, Click, View
 
 
 @admin.register(Advertiser)
@@ -30,7 +30,15 @@ class AdAdmin(admin.ModelAdmin):
 
 @admin.register(Click)
 class ClickAdmin(admin.ModelAdmin):
-    readonly_fields = ('time',)
+    readonly_fields = ('time', 'view_delay')
 
     class Meta:
         model = Click
+
+
+@admin.register(View)
+class ClickAdmin(admin.ModelAdmin):
+    readonly_fields = ('time',)
+
+    class Meta:
+        model = View

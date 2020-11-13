@@ -1,4 +1,5 @@
 from django.shortcuts import get_object_or_404
+from django.utils import timezone
 from django.views.generic import TemplateView, RedirectView
 
 from advertising.models import Advertiser, Ad, Click, View
@@ -22,13 +23,18 @@ class AdvertisersView(TemplateView):
 
 
 class AdRedirectView(RedirectView):
-    permanent = True
+    permanent = False
 
     @staticmethod
     def click_ad(ad, ip):
-        Click.objects.create(ad=ad, ip=ip)
+        print('shit')
+        query = Click.objects.create(ad=ad,
+                                     ip=ip,
+                                     view_delay=timezone.now() - ad.views.filter(ip=ip).order_by('-time').first().time)
+        print(query)
 
     def get_redirect_url(self, *args, **kwargs):
+        print('hello')
         ad = get_object_or_404(Ad, pk=kwargs['pk'])
         self.click_ad(ad, kwargs['ip'])
         return ad.link

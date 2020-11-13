@@ -8,5 +8,6 @@ class MakeReviewMiddleware:
         return response
 
     def process_view(self, request, view_func, view_args, view_kwargs):
+        print("FUCK YOU")
         if view_func.__name__ == 'AdvertisersView' or view_func.__name__ == 'AdRedirectView':
             view_kwargs['ip'] = request.META.get('REMOTE_ADDR')
