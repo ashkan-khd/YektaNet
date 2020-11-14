@@ -4,15 +4,15 @@ from django.db.models import CASCADE
 from advertising.models import Ad
 
 
-class Review(models.Model):
+class BaseAdEvent(models.Model):
     time = models.DateTimeField(auto_now_add=True)
     ip = models.GenericIPAddressField()
 
     class Meta:
-        abstract: True
+        abstract = True
 
 
-class Click(Review):
+class Click(BaseAdEvent):
     view_delay = models.DurationField()
     ad = models.ForeignKey(
         to=Ad,
@@ -24,7 +24,7 @@ class Click(Review):
         return str(self.ip) + '- ' + str(self.ad)
 
 
-class View(Review):
+class View(BaseAdEvent):
     ad = models.ForeignKey(
         to=Ad,
         related_name='views',

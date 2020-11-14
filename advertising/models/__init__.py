@@ -1,4 +1,4 @@
 from .advertiser import Advertiser
 from .ad import Ad
-from .review import Click
-from .review import View
+from .ad_events import Click
+from .ad_events import View
