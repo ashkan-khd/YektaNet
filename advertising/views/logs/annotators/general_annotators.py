@@ -38,7 +38,6 @@ def annotate_total_ctr(annotator):
 @annotate_total_clicks_views
 @annotate_total_ctr
 def annotate_general(query, fields):
-    query = query.exclude(views_count_total=0) \
-        .annotate(ctr_total=Cast('clicks_count_total', FloatField()) / Cast('views_count_total', FloatField()))
-    fields += ['id', 'ctr_total']
     return query, fields
+
+
