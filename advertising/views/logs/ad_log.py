@@ -15,6 +15,6 @@ class AdLogView(views.APIView):
             query, fields = annotate_hour_filtered(query, fields, hour)
 
         if request.query_params.get('id', None):
-            query = query.filter(id=request.query_params['id'])
+            query = query.filter(id=int(request.query_params.get('id', -1)))
 
         return Response(data=query.values(*fields))
