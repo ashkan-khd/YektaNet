@@ -9,7 +9,6 @@ from advertising.models import Ad
 class AdLogView(views.APIView):
 
     def get(self, request):
-        print(request.query_params.get('shit'))
         query = Ad.objects.all()
         query = query.annotate(click_view_delay=Avg('clicks__view_delay'))\
             .annotate(views_count_total=Count('views', distinct=True),
