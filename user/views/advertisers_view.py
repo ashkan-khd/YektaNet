@@ -2,7 +2,8 @@ from rest_framework.generics import ListAPIView
 from rest_framework.renderers import TemplateHTMLRenderer
 from rest_framework.response import Response
 
-from advertising.models import Advertiser, View
+from advertising.models import View
+from user.models import Advertiser
 
 
 class AdvertisersView(ListAPIView):

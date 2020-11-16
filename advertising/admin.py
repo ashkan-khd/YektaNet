@@ -1,14 +1,6 @@
 from django.contrib import admin
 
-from advertising.models import Ad, Advertiser, Click, View
-
-
-@admin.register(Advertiser)
-class AdvertiserAdmin(admin.ModelAdmin):
-    readonly_fields = ('clicks',)
-
-    class Meta:
-        model = Advertiser
+from advertising.models import Ad, Click, View
 
 
 @admin.register(Ad)

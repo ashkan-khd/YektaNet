@@ -10,7 +10,7 @@ class AdRedirectView(RedirectView):
 
     @staticmethod
     def click_ad(ad, ip):
-        query = Click.objects.create(ad=ad,
+        Click.objects.create(ad=ad,
                                      ip=ip,
                                      view_delay=timezone.now() - ad.views.filter(ip=ip).order_by('-time').first().time)
 

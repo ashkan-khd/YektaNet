@@ -1,8 +1,11 @@
+from django.contrib.auth.models import User
 from django.db import models
 
 
-class Advertiser(models.Model):
-    name = models.CharField(max_length=100, null=False, blank=False)
+class Advertiser(User):
+
+    def name(self):
+        return str(self)
 
     def clicks(self):
         clicks = 0
@@ -15,4 +18,4 @@ class Advertiser(models.Model):
         return ads
 
     def __str__(self):
-        return str(self.name)
+        return str(self.first_name) + ' ' + str(self.last_name)
