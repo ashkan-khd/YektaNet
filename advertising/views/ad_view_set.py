@@ -1,18 +1,14 @@
-from rest_framework import mixins, viewsets, status
+from rest_framework import status
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.decorators import action
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
 
 from rest_framework.response import Response
 
+from DBDjango.custom_viewsets import ListCreateRetrieveViewSet
 from advertising.models import Ad
-from advertising.views.ad_views.logs.annotators import annotate_general, annotate_hour_filtered
-from advertising.views.ad_views.serializers import AdSerializer
-
-
-class ListCreateRetrieveViewSet(mixins.CreateModelMixin, mixins.ListModelMixin, mixins.RetrieveModelMixin,
-                                viewsets.GenericViewSet):
-    pass
+from advertising.views.logs.annotators import annotate_general, annotate_hour_filtered
+from advertising.serializers import AdSerializer
 
 
 class AdViewSet(ListCreateRetrieveViewSet):

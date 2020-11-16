@@ -1,0 +1,1 @@
+from .ad_serializer import AdSerializer
