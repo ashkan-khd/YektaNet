@@ -1,8 +1,8 @@
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 
-from advertising.views import AdvertisersView, AdRedirectView
-from advertising.views.ad_view import AdViewSet
+from advertising.views import AdvertisersView
+from advertising.views.ad_view import AdViewSet, AdRedirectView
 
 router = DefaultRouter()
 router.register('ads', AdViewSet)

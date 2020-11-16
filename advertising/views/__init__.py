@@ -1,1 +1,1 @@
-from .advertisers_view import AdvertisersView, AdRedirectView
+from .advertisers_view import AdvertisersView
