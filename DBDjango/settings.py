@@ -55,7 +55,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'advertising.middlewares.make_review_middleware.MakeReviewMiddleware'
+    'DBDjango.middlewares.MakeReviewMiddleware'
 ]
 
 ROOT_URLCONF = 'DBDjango.urls'
