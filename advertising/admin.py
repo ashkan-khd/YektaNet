@@ -23,6 +23,7 @@ class AdAdmin(admin.ModelAdmin):
     list_display = ['__str__', 'Clicks', 'Views', 'is_approved']
     list_filter = ['is_approved']
     search_fields = ['title']
+    readonly_fields = ('create_time',)
 
     class Meta:
         model = Ad
