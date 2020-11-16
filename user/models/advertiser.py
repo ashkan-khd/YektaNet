@@ -1,5 +1,4 @@
 from django.contrib.auth.models import User
-from django.db import models
 
 
 class Advertiser(User):
@@ -18,4 +17,4 @@ class Advertiser(User):
         return ads
 
     def __str__(self):
-        return str(self.first_name) + ' ' + str(self.last_name)
+        return str(self.first_name) + ' ' + str(self.last_name) + '- id: ' + str(self.id)

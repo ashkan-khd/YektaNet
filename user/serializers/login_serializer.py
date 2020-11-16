@@ -15,16 +15,13 @@ class LoginSerializer(AuthTokenSerializer):
         raise NotImplementedError
 
     def validate(self, data):
-        print(1)
         username, password = data.get('username', ''), data.get('password', '')
         user = get_object_or_404(User.objects.all(), username=username)
-
-        print(2)
 
         if not check_password(password, user.password):
             raise ValidationError(
                 '~WRONG PASSWORD~', code=HTTP_403_FORBIDDEN
             )
-        print(3)
+
         data['user'] = user
         return data
