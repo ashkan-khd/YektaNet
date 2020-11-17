@@ -27,15 +27,15 @@ class AdViewSet(ListCreateRetrieveViewSet):
     @staticmethod
     def annotate_logs(request, query):
         query, fields = annotate_general(query, ['id'])
-
         if request.query_params.get('hour', None):
             hour = int(request.query_params.get('hour'))
-            query, fields = annotate_hour_filtered(query, fields, hour)
-
-        return query.values(*fields)
+            return annotate_hour_filtered(query, fields, [], hour)
+        else:
+            return query.values(*fields)
 
     @action(detail=True, url_path='log', url_name='log')
     def log(self, request, pk=None):
+        self.queryset.filter(pk=9).values()
         return Response(data=self.annotate_logs(request, self.queryset.filter(pk=pk)))
 
     @action(detail=False, url_path='log', url_name='log')
