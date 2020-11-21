@@ -17,4 +17,4 @@ class Advertiser(User):
         return ads
 
     def __str__(self):
-        return str(self.first_name) + ' ' + str(self.last_name) + '- id: ' + str(self.id)
+        return str(self.first_name) + ' ' + str(self.last_name)

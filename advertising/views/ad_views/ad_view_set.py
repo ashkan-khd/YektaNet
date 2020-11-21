@@ -7,7 +7,7 @@ from rest_framework.response import Response
 
 from DBDjango.custom_viewsets import ListCreateRetrieveViewSet
 from advertising.models import Ad
-from advertising.views.logs.annotators import annotate_general, annotate_hour_filtered
+from advertising.views.ad_views.logs import annotate_general, annotate_hour_filtered
 from advertising.serializers import AdSerializer
 
 
