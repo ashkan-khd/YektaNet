@@ -9,11 +9,7 @@ class AdSerializer(serializers.ModelSerializer):
         data['advertiser'] = self.context['request'].user.advertiser
         return data
 
-    def create(self, validated_data):
-        ad = Ad.objects.create(**validated_data)
-        return ad
-
     class Meta:
         model = Ad
-        fields = ['id', 'title', 'image_url', 'link', 'advertiser', 'create_time']
+        fields = ['id', 'title', 'image_url', 'link', 'advertiser', 'created']
         extra_kwargs = {'advertiser': {'read_only': True}}

@@ -3,10 +3,10 @@ from django.db import models
 from django.db.models import CASCADE
 
 from advertising.models import Ad
+from utility.models import BaseHistoryModel
 
 
-class BaseAdEvent(models.Model):
-    time = models.DateTimeField(auto_now_add=True)
+class BaseAdEvent(BaseHistoryModel):
     ip = models.GenericIPAddressField()
 
     class Meta:

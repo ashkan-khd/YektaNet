@@ -15,7 +15,7 @@ class AdAdmin(admin.ModelAdmin):
     list_display = ['__str__', 'Clicks', 'Views', 'is_approved']
     list_filter = ['is_approved']
     search_fields = ['title']
-    readonly_fields = ('create_time',)
+    readonly_fields = ('created', 'updated')
 
     class Meta:
         model = Ad
@@ -23,7 +23,7 @@ class AdAdmin(admin.ModelAdmin):
 
 @admin.register(Click)
 class ClickAdmin(admin.ModelAdmin):
-    readonly_fields = ('time', 'view_delay')
+    readonly_fields = ('created', 'view_delay')
 
     class Meta:
         model = Click
@@ -31,7 +31,7 @@ class ClickAdmin(admin.ModelAdmin):
 
 @admin.register(View)
 class ClickAdmin(admin.ModelAdmin):
-    readonly_fields = ('time',)
+    readonly_fields = ('created',)
 
     class Meta:
         model = View
