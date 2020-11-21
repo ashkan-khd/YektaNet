@@ -11,12 +11,8 @@ class AdvertisersView(ListAPIView):
     renderer_classes = [TemplateHTMLRenderer]
     template_name = 'ads.html'
 
-    @staticmethod
-    def view_ad(ad, ip):
-        View.objects.create(ad=ad, ip=ip)
-
     def get(self, request, *args, **kwargs):
         for advertiser in self.queryset.all():
             for ad in advertiser.approved_ads():
-                self.view_ad(ad, kwargs['ip'])
+                View.view_ad(ad, kwargs['ip'])
         return Response({'advertisers': self.queryset.all()}, template_name=self.template_name)
